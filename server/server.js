@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 
 app.use(express.static('server/public'));
 
-
+// route for /task
 let tasksRouter = require('./routes/tasks.router');
 
 
