@@ -29,16 +29,25 @@ function getTask(){
         type: 'GET',
         url: '/task'
     }).then(function (response){
+        console.log(response);
         appendTasks(response);
     });
 }
 
 
-function appendTasks(){
-    $('#tasksToComplete').empty().append(`
-        <div>
-            
-        </div>
-    `)
+function appendTasks(array){
+    console.log(array);
+    for (let newTask of array){
+        $('#tasksToComplete').append(`
+            <tr>
+                <td>${newTask.task}</td>
+                <td>Need To Be Completed</td>
+                <td>
+                    <button>Delete</button>
+                    <button>Complete</button>
+                </td>
+            </tr>
+        `);
+    }
 
 }
