@@ -19,16 +19,26 @@ function postTask(){
     }).then(function (response) {
         console.log(response);
         $('#task').val('');
-        // getTask();
+        getTask();
     });
 }
 
-
+// function to get data from server
 function getTask(){
     $.ajax({
         type: 'GET',
         url: '/task'
     }).then(function (response){
-
+        appendTasks(response);
     });
+}
+
+
+function appendTasks(){
+    $('#tasksToComplete').empty().append(`
+        <div>
+            
+        </div>
+    `)
+
 }
