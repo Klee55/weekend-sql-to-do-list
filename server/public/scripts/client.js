@@ -5,6 +5,7 @@ function onReady(){
     $('#addTask').on('click', postTask);
 }
 
+// function for grabbing new task and send to server
 function postTask(){
     let newTask = {
         task: $('#task').val()
@@ -14,6 +15,10 @@ function postTask(){
         type: 'POST',
         url: '/task',
         data: newTask
+    }).then(function (response) {
+        console.log(response);
+        $('#task').val('');
+        // getTask();
     });
     
     

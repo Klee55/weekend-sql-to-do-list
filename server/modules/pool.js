@@ -3,7 +3,7 @@ const pg = require('pg');
 const Pool = pg.Pool;
 
 const pool = new Pool({
-    database: 'lydian_intro',
+    database: 'tasks',
     host: 'localhost',
     port: 5432,
     max: 10,
@@ -11,7 +11,7 @@ const pool = new Pool({
 });
 
 pool.on('connect', () => {
-    console.log('[rogress is connected')
+    console.log('postico is connected')
 });
 
 pool.on('error', (error) => {
