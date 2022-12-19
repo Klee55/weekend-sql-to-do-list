@@ -3,6 +3,7 @@ $(document).ready(onReady);
 function onReady(){
     console.log('doc ready');
     $('#addTask').on('click', postTask);
+    getTask();
 }
 
 // function for grabbing new task and send to server
@@ -20,6 +21,14 @@ function postTask(){
         $('#task').val('');
         // getTask();
     });
-    
-    
+}
+
+
+function getTask(){
+    $.ajax({
+        type: 'GET',
+        url: '/task'
+    }).then(function (response){
+
+    });
 }

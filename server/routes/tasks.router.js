@@ -20,6 +20,12 @@ router.post('/', (req, res) =>{
 
 });
 
+router.get('/', (req, res) =>{
+    console.log('get request made');
+    const queryText = 'SELECT * from tasks';
+    pool.qu
+});
+
 
 
 
