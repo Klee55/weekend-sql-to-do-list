@@ -13,7 +13,7 @@ router.post('/', (req, res) =>{
     `;
     // console.log(queryText);
     pool.query(queryText)
-    .then((result) =>{
+    .then((result) => {
         // console.log(result);
         res.sendStatus(201);
     })
@@ -36,20 +36,34 @@ router.get('/', (req, res) =>{
     });
 });
 
-
+// function will delete task in database
 router.delete('/:id', (req, res) => {
     console.log('delete request made', req.params.id);
-    const queryText = `DELETE from tasks WHERE id = ${req.params.id};`;
+    const queryText = `DELETE from "tasks" WHERE "id" = '${req.params.id}';`;
     pool.query(queryText)
     .then((result) => {
         res.sendStatus(204);
     })
-    .catch((error) =>{
+    .catch((error) => {
         console.log('error with delete request', error)
         res.sendStatus(500);
     });
 });
 
+
+// function will update task to complete in database 
+router.put('/:id', (req, res) => {
+    console.log('put request made', req.params.id);
+    const queryText = `UPDATE "tasks" SET "status"='completed' WHERE "id"='${req.params.id}';`;
+    pool.query(queryText)
+    .then((dbResponse) => {
+        console.log('put response from database', dbResponse)
+    })
+    .catch((error) => {
+        console.log('error with put request', error);
+        res.sendStatus(500);
+    });
+});
 
 
 

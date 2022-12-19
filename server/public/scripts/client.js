@@ -31,7 +31,7 @@ function getTask(){
         type: 'GET',
         url: '/task'
     }).then(function (response){
-        console.log(response);
+        // console.log(response);
         appendTasks(response);
     });
 }
@@ -54,7 +54,7 @@ function appendTasks(array){
     }
 }
 
-
+// function will delete task and update database
 function deleteTask(){
     console.log('delete button');
     const id = ($(this).data('id'));
@@ -68,7 +68,17 @@ function deleteTask(){
     });
 }
 
+// function will complete task and update database
 function completeTask(){
     console.log('complete button');
-    console.log($(this).data('id'));
+    const id = ($(this).data('id'));
+    $.ajax({
+        type: 'PUT',
+        url: `/task/${id}`,
+    }).then(function() {
+        getTask();
+    }).catch(function(error){
+        console.log('error wtih complete button', error);
+    });
+    $(this).remove();
 }
