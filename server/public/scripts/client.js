@@ -82,3 +82,8 @@ function completeTask(){
     });
     $(this).remove();
 }
+
+
+// notes for Monday: fix css so status will change color when task is completed
+// notes cont..: add complete option to be checked off
+// notes cont..: fix compelte button so it can update status to compelete in DOM without refreshin
