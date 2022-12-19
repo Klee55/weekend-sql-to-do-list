@@ -10,6 +10,7 @@ app.use(express.static('server/public'));
 
 // route for /task
 let tasksRouter = require('./routes/tasks.router');
+app.use('/task', tasksRouter);
 
 
 
