@@ -8,7 +8,7 @@ body {
 #bodyDiv {
     background-color: khaki;
     padding: 10px;
-    border: 1px solid maroon;
+    border: 5px solid maroon;
 }
 
 #tasksTable{
