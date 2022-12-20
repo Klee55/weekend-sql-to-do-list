@@ -2,10 +2,11 @@ $(document).ready(onReady);
 
 function onReady(){
     console.log('doc ready');
-    getTask();
+    //getTask();
     $('#addTask').on('click', postTask);
     $('#tasksToComplete').on('click', '.deleteButton', deleteTask);
     $('#tasksToComplete').on('click', '.completeButton', completeTask);
+    getTask();
 }
 
 // function for grabbing new task and send to server
@@ -41,16 +42,29 @@ function appendTasks(array){
     console.log(array);
     $('#tasksToComplete').empty();
     for (let newTask of array){
+        if(newTask.status == 'Incomplete') {
         $('#tasksToComplete').append(`
             <tr>
                 <td>${newTask.task}</td>
-                <td>${newTask.status}</td>
+                <td style="background-color:red">${newTask.status}</td>
                 <td>
                     <button class="deleteButton" data-id=${newTask.id}>Delete</button>
                     <button class="completeButton" data-id=${newTask.id}>Complete</button>
                 </td>
             </tr>
         `);
+        }
+        if(newTask.status == 'Completed') {
+            $('#tasksToComplete').append(`
+            <tr>
+                <td>${newTask.task}</td>
+                <td style="background-color:green">${newTask.status}</td>
+                <td>
+                    <button class="deleteButton" data-id=${newTask.id}>Delete</button>
+                </td>
+            </tr>
+            `);
+        }
     }
 }
 

@@ -25,7 +25,7 @@ router.post('/', (req, res) =>{
 // function to get data from database and send to DOM
 router.get('/', (req, res) =>{
     console.log('get request made');
-    const queryText = 'SELECT * from tasks';
+    const queryText = 'SELECT * from tasks ORDER BY id asc';
     pool.query(queryText)
     .then((result) => {
         // console.log('result from database:', result);
@@ -54,10 +54,11 @@ router.delete('/:id', (req, res) => {
 // function will update task to complete in database 
 router.put('/:id', (req, res) => {
     console.log('put request made', req.params.id);
-    const queryText = `UPDATE "tasks" SET "status"='completed' WHERE "id"='${req.params.id}';`;
+    const queryText = `UPDATE "tasks" SET "status"='Completed' WHERE "id"='${req.params.id}';`;
     pool.query(queryText)
     .then((dbResponse) => {
         console.log('put response from database', dbResponse)
+        res.sendStatus(200);
     })
     .catch((error) => {
         console.log('error with put request', error);
